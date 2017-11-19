@@ -38,13 +38,18 @@ $ terraform apply \
 ```
 
 This creates the following:
-* service account `k1-node@cf-sandbox-twong.iam.gserviceaccount.com`
+* service account which will be used inside each BOSH VM. It'll be named `${prefix}-node@cf-sandbox-twong.iam.gserviceaccount.com` and it'll have these roles:
+  * `roles/compute.storageAdmin`
+  * `roles/compute.networkAdmin`
+  * `roles/compute.securityAdmin`
+  * `roles/compute.instanceAdmin`
+  * `roles/iam.serviceAccountActor`
 * subnet `k1-us-west1-subnet` with CIDR range `10.0.1.0/24` and gateway `10.0.1.1`
-* firewall rule for ssh ingress into the bastion `k1-bosh-bastion`
-* firewall rule for communication between bastion and director `k1-intra-subnet-open`
+* firewall rule for SSH ingress into the bastion `k1-bosh-bastion`
+* firewall rule for communication between VMs in the subnet `k1-intra-subnet-open` using tag `internal`
 * bastion VM with external IP `k1-bosh-bastion`
 * NAT VM with external IP `k1-nat-instance-primary`
-* route that allows VMs to use the NAT `k1nat-primary`
+* route that allows VMs to use the NAT `k1-nat-primary` using tag `no-ip`
 
 ## Copy the key into the bastion
 ```sh
