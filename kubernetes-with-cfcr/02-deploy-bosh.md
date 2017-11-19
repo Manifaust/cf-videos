@@ -26,9 +26,9 @@ This will create the `cfcr-config` folder . Inside of which is the configuration
 ```yaml
 project_id: cf-sandbox-twong
 network: cfcr-net
-subnetwork: k1kubo-us-west1
+subnetwork: k1-us-west1-subnet
 zone: us-west1-a
-service_account: k1kubo@cf-sandbox-twong.iam.gserviceaccount.com # the service account created in the earlier terraform script. It'll be used by the CPI
+service_account: k1-node@cf-sandbox-twong.iam.gserviceaccount.com # the service account created in the earlier terraform script. It'll be used by the CPI
 
 internal_ip: 10.0.1.252 # decide the future IP address of your director, must be in your subnet
 deployments_network: my-cfcr-deployments-network # the internal name that BOSH will use place deployments. Can be whatever you want

@@ -20,7 +20,7 @@ $ gcloud iam service-accounts keys create \
 ## Deploy bastion
 
 ```sh
-$ cp ~/workspace/kubo-deployment/docs/user-guide/platforms/gcp/kubo-infrastructre.tf ./
+$ cp ~/workspace/cf-videos/kubernetes-with-cfcr/kubo-infrastructure.tf ./
 $ terraform init
 $ export GOOGLE_CREDENTIALS=$(cat gcp-service-account.key.json)
 $ export network=cfcr-net
@@ -38,12 +38,12 @@ $ terraform apply \
 ```
 
 This creates the following:
-* service account `k1kubo@cf-sandbox-twong.iam.gserviceaccount.com`
-* subnet `k1kubo-us-west1` with CIDR range `10.0.1.0/24` and gateway `10.0.1.1`
-* firewall rule for ssh ingress into the bastion `k1bosh-bastion`
-* firewall rule for communication between bastion and director `k1intra-subnet-open`
-* bastion VM with external IP `k1bosh-bastion`
-* NAT VM with external IP `k1nat-instance-primary`
+* service account `k1-node@cf-sandbox-twong.iam.gserviceaccount.com`
+* subnet `k1-us-west1-subnet` with CIDR range `10.0.1.0/24` and gateway `10.0.1.1`
+* firewall rule for ssh ingress into the bastion `k1-bosh-bastion`
+* firewall rule for communication between bastion and director `k1-intra-subnet-open`
+* bastion VM with external IP `k1-bosh-bastion`
+* NAT VM with external IP `k1-nat-instance-primary`
 * route that allows VMs to use the NAT `k1nat-primary`
 
 ## Copy the key into the bastion
