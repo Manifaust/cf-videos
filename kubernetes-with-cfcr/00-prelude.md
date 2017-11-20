@@ -13,7 +13,7 @@ $ gcloud projects add-iam-policy-binding ${project_id} \
     --member serviceAccount:${service_account_email} \
     --role roles/owner
 $ gcloud iam service-accounts keys create \
-    gcp-service-account.key.json \
+    k1-admin-service-account.key.json \
     --iam-account ${service_account_email}
 ```
 
@@ -22,7 +22,7 @@ $ gcloud iam service-accounts keys create \
 ```sh
 $ cp ~/workspace/cf-videos/kubernetes-with-cfcr/kubo-infrastructure.tf ./
 $ terraform init
-$ export GOOGLE_CREDENTIALS=$(cat gcp-service-account.key.json)
+$ export GOOGLE_CREDENTIALS=$(cat k1-admin-service-account.key.json)
 $ export network=cfcr-net
 $ export region=us-west1
 $ export zone=us-west1-a
@@ -53,6 +53,6 @@ This creates the following:
 
 ## Copy the key into the bastion
 ```sh
-$ gcloud compute scp gcp-service-account.key.json \
-    k1bosh-bastion:~/gcp-service-account.key.json
+$ gcloud compute scp k1-admin-service-account.key.json \
+    k1bosh-bastion:~/k1-admin-service-account.key.json
 ```

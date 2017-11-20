@@ -74,7 +74,7 @@ authorization_mode: rbac
 
 ```sh
 kubo-deployment/bin/deploy_bosh \
-    ~/cfcr-config ~/gcp-service-account.key.json
+    ~/cfcr-config ~/k1-admin-service-account.key.json
 ```
 
 ## Show a little of BOSH
