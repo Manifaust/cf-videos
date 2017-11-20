@@ -1,3 +1,19 @@
+# How does BOSH work?
+
+[BOSH architecture](https://bosh.io/docs/bosh-components.html)
+
+Like k8s, BOSH is made up of several components. In fact, if you understand the components of k8s, you can often find direct analogues in BOSH.
+
+* Director (like a k8s master) - receives command from the user and creates tasks to be run. It reconciles the current state of the system and the expected state.
+* Agent (a process running on each VM) - think of it as kubelet, takes orders from the director, checks with Monit to make sure processes on the VM are alive. Communicates with the health monitor
+* Health Monitor
+* CPI
+* CLI
+* BOSH release
+
+BOSH is great for deploying platforms, and that’s why it’s used to operating something as complex as Cloud Foundry and now k8s.
+
+
 # Deploy BOSH
 
 ## SSH into bastion
