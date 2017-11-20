@@ -54,5 +54,5 @@ This creates the following:
 ## Copy the key into the bastion
 ```sh
 $ gcloud compute scp k1-admin-service-account.key.json \
-    k1bosh-bastion:~/k1-admin-service-account.key.json
+    k1-bosh-bastion:~/k1-admin-service-account.key.json
 ```

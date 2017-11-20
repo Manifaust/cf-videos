@@ -19,7 +19,7 @@ BOSH is great for deploying platforms, and that’s why it’s used to operating
 ## SSH into bastion
 
 ```sh
-gcloud compute ssh k1bosh-bastion
+gcloud compute ssh k1-bosh-bastion
 ```
 
 ## Download kubo-deployment

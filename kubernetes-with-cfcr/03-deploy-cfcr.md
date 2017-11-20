@@ -57,7 +57,7 @@ less .kube/config
 Exit the bastion.
 
 ```sh
-gcloud compute scp k1bosh-bastion:~/.kube/config ./kubeconfig
+gcloud compute scp k1-bosh-bastion:~/.kube/config ./kubeconfig
 kubectl --kubeconfig=./kubeconfig cluster-info
 kubectl get componentstatuses
 kubectl get nodes
