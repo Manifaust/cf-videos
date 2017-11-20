@@ -18,10 +18,10 @@ These are the things that CFCR aims to solve. It deals with those tricky issues 
 BOSH is a tool chain for deploying and managing software on VMs. It was designed for distributed, highly available software that has to support multiple cloud providers. It worries about VMs so the operator doesn't have to.
 
 It has these features that are important for k8s:
-	* monitoring and health check
-	* infrastructure self-healing
-	* scaling
-	* certificate management and credential management
+* monitoring and health check
+* infrastructure self-healing
+* scaling
+* certificate management and credential management
 
 # GCP Prerequisite
 
