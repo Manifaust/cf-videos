@@ -56,14 +56,6 @@ dns_recursor_ip: 10.0.1.1 # DNS IP for resolving non-BOSH hostnames
 
 Remind people that if they followed the docs to create the bastion this script is already there in `/usr/bin/update_gcp_env`.
 
-## Create the encryption key for credhub
-
-```sh
-random_key=$(hexdump -n 16 -e '4/4 "%08X" 1 "\n"' /dev/urandom)
-# edit the director.yml
-# credhub_encryption_key: ${random_key}
-```
-
 ## Use RBAC
 
 ```yaml
