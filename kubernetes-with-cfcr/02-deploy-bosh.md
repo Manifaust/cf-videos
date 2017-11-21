@@ -56,13 +56,15 @@ dns_recursor_ip: 10.0.1.1 # DNS IP for resolving non-BOSH hostnames
 
 Remind people that if they followed the docs to create the bastion this script is already there in `/usr/bin/update_gcp_env`.
 
-## Use RBAC
+## (Opitonal) Use RBAC
+
+Soon, the default authorization mode will be RBAC. For now, if you want to use RBAC instead of ABAC, edit this portion of the `director.yml`
 
 ```yaml
 authorization_mode: rbac
 ```
 
-## Start the deployment
+## Kick off the deployment
 
 ```sh
 kubo-deployment/bin/deploy_bosh \
