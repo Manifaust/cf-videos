@@ -2,16 +2,18 @@
 
 [BOSH architecture](https://bosh.io/docs/bosh-components.html)
 
-Like Kubernetes, BOSH is made up of several components. In fact, if you understand the components of Kubernetes, you can often find direct analogues in BOSH.
+Like I mentioned before, BOSH is a toolchain that helps people operate complex software. By deploying software with BOSH, your services will support multiple IaaSes, it'll be highly availble, it'll be self healing in the face of infrastructure failures, it'll be easy to scale.
 
-* Director (like a Kubernetes master) - receives command from the user and creates tasks to be run. It reconciles the current state of the system and the expected state.
-* Agent (a process running on each VM) - think of it as kubelet, takes orders from the director, checks with Monit to make sure processes on the VM are alive. Communicates with the health monitor
-* Health Monitor - monitors the health of VMs
-* Cloud Provider Interface (CPI) - talks to a IaaS to procure resources
+BOSH was designed with these features so it can deploy complex platforms like Cloud Foundry and now Kubernetes. Like Kubernetes, BOSH is made up of several components. In fact, if you understand the components of Kubernetes, you can often find direct analogues in BOSH.
+
+* Director (like a Kubernetes API server) - receives command from the user and creates tasks to be run. It reconciles the current state of the system and the expected state.
+* VMs - where BOSH install software
+* Agent (a process running on each VM) - think of it as kubelet, takes orders from the director, checks with Monit to make sure processes on the VM are alive. Communicates with the health monitor.
+* Health Monitor - monitors the health of VMs and notifies the director
+* Cloud Provider Interface (CPI) - Cloud Foundry developers have already implemented this interface for all the popular IaaS (including AWS, GCP, vSphere, and OpenStack) and it allows BOSH to talks to each infrastructure  provider to procure resources.
 * CLI
 * BOSH release
 
-BOSH was designed to opearate complex systems, that’s why it's relied on to operate Cloud Foundry and now Kubernetes.
 
 ## BOSH Release
 
@@ -30,7 +32,7 @@ When the user deploys this release, the resulting instance is called a deploymen
 
 When a new version of a release is published, the user goes through the same deployment process, except now a rolling upgrade is possible.
 
-Deploying a director takes around 30 minutes. Upgrading can be faster depending on how much has changed. But it doesn't involve any downtime for the deployments, meaning the services are not disrupted.
+Deploying a director takes around 30 minutes. Ideally, the user rarely has to upgrade BOSH itself, but an upgrade can be faster than an initial deployment depending on how much has changed. The good thing is it doesn't involve any downtime for the deployments, meaning the services are not disrupted.
 
 
 # Deploy BOSH
