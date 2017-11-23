@@ -2,16 +2,35 @@
 
 [BOSH architecture](https://bosh.io/docs/bosh-components.html)
 
-Like k8s, BOSH is made up of several components. In fact, if you understand the components of k8s, you can often find direct analogues in BOSH.
+Like Kubernetes, BOSH is made up of several components. In fact, if you understand the components of Kubernetes, you can often find direct analogues in BOSH.
 
-* Director (like a k8s master) - receives command from the user and creates tasks to be run. It reconciles the current state of the system and the expected state.
+* Director (like a Kubernetes master) - receives command from the user and creates tasks to be run. It reconciles the current state of the system and the expected state.
 * Agent (a process running on each VM) - think of it as kubelet, takes orders from the director, checks with Monit to make sure processes on the VM are alive. Communicates with the health monitor
-* Health Monitor
-* CPI
+* Health Monitor - monitors the health of VMs
+* Cloud Provider Interface (CPI) - talks to a IaaS to procure resources
 * CLI
 * BOSH release
 
-BOSH is great for deploying platforms, and that’s why it’s used to operating something as complex as Cloud Foundry and now k8s.
+BOSH was designed to opearate complex systems, that’s why it's relied on to operate Cloud Foundry and now Kubernetes.
+
+## BOSH Release
+
+While BOSH has many similarities with Kubernetes, the way they package software is different. You can think of packaged software in the BOSH world as tarballs called *releases*. Releases contains the libraries, source code, binaries, scripts, and configuration templates needed to deploy a system of software. 
+
+In case the case of the CFCR BOSH release, the packages in the tarball include golang, cni, flanneld, among others. The binaries include api-server, kubeproxy, kubelet, among others. The release also include configuration templates to configure these components. The whole thing is packaged together in a tarball, and the software vendor can then distribute this tarball however they like.
+
+When the user deploys this release, the resulting instance is called a deployment. The way a deployment is created goes like this:
+
+1. taking the release, compiling packages and source code
+1. spin up the configured number of VMs
+1. start the BOSH agent on each VM
+1. install the of the compiled software on the VMs
+1. set up the configuration for those software
+1. start the software, also start monitoring for crashes
+
+When a new version of a release is published, the user goes through the same deployment process, except now a rolling upgrade is possible.
+
+Deploying a director takes around 30 minutes. Upgrading can be faster depending on how much has changed. But it doesn't involve any downtime for the deployments, meaning the services are not disrupted.
 
 
 # Deploy BOSH
