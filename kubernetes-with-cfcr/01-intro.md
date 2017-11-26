@@ -1,24 +1,18 @@
 # Intro
 
-*CFCR aims to delight Kubernetes operators*
+> *CFCR aims to delight Kubernetes operators*
 
-Kubernetes is great because it lets develops focus on writing and developing software instead of worrying about the infrastructure and platform. 
+My name is Tony Wong and I'm an engineer on the Cloud Foundry Container Runtime team, also known as CFCR.
 
-However, deploying and operating Kubernetes has a few challenges:
-* resilience towards IaaS issues
+CFCR used to be called Kubo, so you'll see lots of references to Kubo in this video. I'm sorry about that, we're slowly converting the names of everything.
+
+The goal of CFCR is to simplify deploying and maintaining a Kubernetes cluster. It was designed to lift the day-to-day burden of operators, with features like:
+
+* providing resilience against VMs failures from your IaaS
 * generate, installing, and managing certificates
-* monitoring the health of k8s processes such as proxy and api server
-* make the process repeatable (even with different IaaS’s)
-* upgrading gracefully or rolling system upgrades
+* monitoring the health of Kubernetes processes such as proxy and API server
+* support different infrastructure providers so you're not locked down
+* make the deployment process easily repeatable
+* support rolling system upgrades
 
-These are the things that CFCR aims to solve. It deals with those tricky issues so operators don’t have to. It accomplishes these goals with the help of BOSH.
-
-## BOSH makes operating distributed systems easy
-
-BOSH is a tool chain for deploying and managing software on VMs. It was designed for distributed, highly available software that has to support multiple cloud providers. It worries about VMs so the operator doesn't have to.
-
-It has these features that are important for k8s:
-* monitoring and health check
-* infrastructure self-healing
-* scaling
-* certificate management and credential management
+How does it do that? Well it accomplishes many of these goals with the help of BOSH.
