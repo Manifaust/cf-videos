@@ -1,4 +1,4 @@
-# Verification
+## Verification
 
 ```sh
 $ git clone https://github.com/pivotal-cf-experimental/kubo-ci.git
@@ -9,11 +9,11 @@ $ kubectl get svc nginx
 $ curl <external IP>
 ```
 
-## Show Scaling Up
+### Show Scaling Up
 
 Modify `kubo.yml` to deploy 4 instances instead of 3. Execute `deploy_k8s` again.
 
-## Show Self Healing
+### Show Self Healing
 
 Go into GCP console and show the labels for all the VM instances. Find a worker VM and kill it. Show BOSH bringing up another VM and that VM becomes a node. The node then accept pods from the scheduler.
 

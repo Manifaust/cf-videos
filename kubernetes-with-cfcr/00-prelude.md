@@ -1,8 +1,8 @@
-# Prelude
+## Prelude
 
 This is the stuff I do to set up the bastion before the start of the video. If you already have a bastion VM you don't need to read this text.
 
-## Create admin service account keys
+### Create admin service account keys
 
 ```sh
 $ export prefix=k1
@@ -17,7 +17,7 @@ $ gcloud iam service-accounts keys create \
     --iam-account ${service_account_email}
 ```
 
-## Deploy bastion
+### Deploy bastion
 
 ```sh
 $ cp ~/workspace/cf-videos/kubernetes-with-cfcr/kubo-infrastructure.tf ./
@@ -51,7 +51,7 @@ This creates the following:
 * NAT VM with external IP `k1-nat-instance-primary`
 * route that allows VMs to use the NAT `k1-nat-primary` using tag `no-ip`
 
-## Copy the key into the bastion
+### Copy the key into the bastion
 ```sh
 $ gcloud compute scp k1-admin-service-account.key.json \
     k1-bosh-bastion:~/k1-admin-service-account.key.json
